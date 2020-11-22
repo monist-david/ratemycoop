@@ -80,13 +80,13 @@
                 </ul>
             </div>
         </nav>
+        {% block bodypage %}
+        {% endblock %}
 
     </div>
     <!-- /#page-content-wrapper -->
 
 </div>
-{% block bodypage %}
-{% endblock %}
 
 <!-- Bootstrap core JavaScript -->
 <script src="{% static 'index/vendor/jquery/jquery.min.js' %}"></script>

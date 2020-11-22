@@ -8,6 +8,16 @@ from index.forms import SearchForm
 
 
 class SearchView(TemplateView):
+    template_name = "index/search.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
+
+
+class IndexView(TemplateView):
     template_name = "index/index.html"
 
     def get(self, request):
