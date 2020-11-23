@@ -17,6 +17,25 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'index/css/simple-sidebar.css' %}" rel="stylesheet">
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        {##}
+        {#tr:nth-child(even) {#}
+        {#    background-color: #dddddd;#}
+        {
+        #}#}
+    </style>
 
 {% endblock %}
 
@@ -25,19 +44,71 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
-                <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
-                <h1 class="mt-4">Simple Sidebar</h1>
-                <p>The starting state of the menu will appear collapsed on smaller screens, and will appear
-                    non-collapsed on
-                    larger screens. When toggled using the button below, the menu will change.</p>
-                <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is
-                    optional, and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID
-                    which
-                    will toggle the menu when clicked.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="inner-form">
+                        <div class="input-field first-wrap">
+                            <input id="search_keys" type="text" name="search_keys" maxlength="1000"
+                                   placeholder="What are you looking for?"
+                                   required>
+                            <button class="btn-search" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+
+    <table>
+        <tr>
+            <th>Rank</th>
+            <th>Position</th>
+            <th>Company</th>
+            <th>Rating</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Data Scientist</td>
+            <td>WayFair</td>
+            <td>4.9/5</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>PT Co-op</td>
+            <td>PT Arlington</td>
+            <td>4.7/5</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>UX/UI Design Co-op</td>
+            <td>NetBrain</td>
+            <td>4.7/5</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Accounting Co-op</td>
+            <td>Power Advocate</td>
+            <td>4.5/5</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Mechanical Engineering Co-op</td>
+            <td>HighRes Biosolutions</td>
+            <td>4.2/5</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Software Engineering Co-op</td>
+            <td>ASICS</td>
+            <td>4.1/5</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Marketing Analyst</td>
+            <td>YCharts</td>
+            <td>4.0/5</td>
+        </tr>
+    </table>
     <!-- /#page-content-wrapper -->
 {% endblock %}
 
