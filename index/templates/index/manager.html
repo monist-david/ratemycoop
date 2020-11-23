@@ -1,0 +1,67 @@
+{% extends 'manager_base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'index/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'index/css/simple-sidebar.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block bodypage %}
+    <div class="d-flex" id="wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1 class="text-center mt-4 mb-5">My Co-op Positions at Facebook</h1>
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Position</th>
+                      <th scope="col">Company</th>
+                      <th scope="col">Rating</th>
+                        <th scope="col">Link</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>Software Developer</td>
+                      <td>Facebook</td>
+                      <td>4.5/5</td>
+                        <td><a href="#">Read More</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>Data Scientist</td>
+                      <td>Facebook</td>
+                      <td>4.5/5</td>
+                        <td><a href="#">Read More</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>Front-End Developer</td>
+                      <td>Facebook</td>
+                      <td>4.5/5</td>
+                        <td><a href="#">Read More</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+{% endblock %}
+
+{% block js %}
+{% endblock %}

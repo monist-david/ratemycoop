@@ -25,3 +25,12 @@ class IndexView(TemplateView):
 
     def post(self, request):
         return render(request, self.template_name)
+
+class ManagerView(TemplateView):
+    template_name = "index/manager.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
