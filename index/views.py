@@ -34,3 +34,12 @@ class ManagerView(TemplateView):
 
     def post(self, request):
         return render(request, self.template_name)
+
+class PositionView(TemplateView):
+    template_name = "index/manager_position.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)

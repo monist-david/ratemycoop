@@ -38,7 +38,7 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
         <div class="sidebar-heading">Rate My Co-op</div>
         <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action bg-light">My Positions</a>
+            <a href="{% url "index:manager" %}" class="list-group-item list-group-item-action bg-light">My Positions</a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -54,7 +54,7 @@
                     <span class="navbar-text mr-3">
                         Mark Zuckerberg
                     </span></li>
-                <li class="nav-item"><a class="btn btn-secondary" href="{% url "index:index" %}" style="margin-right: 1vw">Home</a></li>
+                <li class="nav-item"><a class="btn btn-secondary" href="{% url "index:index" %}" style="margin-right: 1vw">Log out</a></li>
 
             </ul>
 
@@ -69,6 +69,7 @@
 </div>
 
 <!-- Bootstrap core JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 <script src="{% static 'index/vendor/jquery/jquery.min.js' %}"></script>
 <script src="{% static 'index/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 

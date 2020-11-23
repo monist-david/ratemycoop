@@ -39,29 +39,47 @@
                       <th scope="row">1</th>
                       <td>Software Developer</td>
                       <td>Facebook</td>
-                      <td>4.5/5</td>
-                        <td><a href="#">Read More</a></td>
+                      <td>4.8/5</td>
+                        <td><a href="{% url "index:front-end-facebook" %}">Read More</a></td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
                       <td>Data Scientist</td>
                       <td>Facebook</td>
                       <td>4.5/5</td>
-                        <td><a href="#">Read More</a></td>
+                        <td><a href="{% url "index:front-end-facebook" %}">Read More</a></td>
                     </tr>
                     <tr>
                       <th scope="row">3</th>
                       <td>Front-End Developer</td>
                       <td>Facebook</td>
-                      <td>4.5/5</td>
-                        <td><a href="#">Read More</a></td>
+                      <td>4.2/5</td>
+                        <td><a href="{% url "index:front-end-facebook" %}">Read More</a></td>
                     </tr>
                   </tbody>
                 </table>
+
         </div>
+    </div>
+    <template>
+                  <div>
+                    <b-form-rating v-model="value" readonly show-value precision="2"></b-form-rating>
+                    <p class="mt-2">Value: {{ value }}</p>
+                  </div>
+                </template>
     </div>
     <!-- /#page-content-wrapper -->
 {% endblock %}
 
 {% block js %}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script>
+      export default {
+        data() {
+          return {
+            value: 3.555
+          }
+        }
+      }
+    </script>
 {% endblock %}

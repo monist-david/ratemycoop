@@ -1,0 +1,47 @@
+{% extends 'manager_base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'index/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'index/css/simple-sidebar.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block bodypage %}
+    <div class="d-flex" id="wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+
+                <!-- Head -->
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <a class="btn btn-secondary mt-4 mb-5" href="{% url "index:manager" %}"> <- Back</a>
+                    </div>
+                    <div >
+                        <h2 class="text-center mt-4 mb-5">Front-End Developer at Facebook</h2>
+                    </div>
+                    <div >
+                        <button class="btn btn-outline-dark mt-4 mb-5">Rating: 4.2/5</button>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+{% endblock %}
