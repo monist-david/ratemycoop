@@ -22,8 +22,8 @@
     .kr-view {
         padding-bottom: 1rem;
         margin: 3rem;
-        background-color: #e8e8e8;
-        max-width: 500px;
+        background-color: #f2f2f2;
+        max-width: 550px;
     }
     .kr-view ul {
         list-style-type: none;
@@ -93,7 +93,7 @@
                         <ul>
                             <li class="kr-table-left mr-5">
                                 <p class="text-center">Pro's</p>
-                                <table class="table">
+                                <table class="table table-hover" >
                                   <tbody>
                                   <tr>
                                       <td scope="col">Teamwork:</td>
@@ -108,7 +108,7 @@
                             </li>
                             <li class="kr-table-right ml-2">
                                 <p class="text-center">Cons's</p>
-                                <table class="table">
+                                <table class="table table-hover">
                                   <tbody>
                                   <tr>
                                       <td scope="col">Inclusivity:</td>
@@ -123,9 +123,75 @@
                             </li>
                         </ul>
                         </div>
+
                         <div class="text-center">
-                            <button class="btn btn-outline-dark">Expand</button>
+                            <button class="btn btn-outline-dark" data-toggle="collapse" href="#collapseExample"
+                                    role="button" aria-expanded="false" aria-controls="collapseExample">More Ratings</button>
                         </div>
+
+
+                        <div class="collapse" id="collapseExample">
+                          <div>
+                             <h6 class="text-center mt-3">All Categories</h6>
+                                <ul>
+
+                                <li class="kr-table-left mr-5">
+
+                                    <table class="table table-hover" >
+                                      <tbody>
+                                      <tr>
+                                          <td scope="col">Responsibility:</td>
+                                          <td scope="col">4.8/5</td>
+                                        </tr>
+                                        <tr>
+                                          <td scope="row">Compensation:</td>
+                                          <td>4.2/5</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Benefits:</td>
+                                          <td>4.0/5</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Teamwork:</td>
+                                          <td>4.9/5</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Supervisors:</td>
+                                          <td>4.3/5</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                </li>
+                                <li class="kr-table-right ml-2">
+                                    <table class="table table-hover">
+                                      <tbody>
+                                      <tr>
+                                          <td scope="col">Growth Opportunity:</td>
+                                          <td scope="col">4.5/5</td>
+                                        </tr>
+                                        <tr>
+                                          <td scope="row">Culture:</td>
+                                          <td>4.0/5</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Working Hours:</td>
+                                          <td>3.3/5</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Inclusivity:</td>
+                                          <td>3.1/5</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Diversity:</td>
+                                          <td>2.3/5</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                </li>
+                            </ul>
+                        </div>
+                        </div>
+
 
                     </div>
 
@@ -137,7 +203,7 @@
                 <div>
                     <h5 class="mb-4">Individual Ratings:</h5>
 
-                    <table class="table mb-5">
+                    <table class="table table-bordered table-striped mb-5" style="border-collapse: collapse">
                   <thead class="thead-dark">
                     <tr>
                       <th scope="col">#</th>
