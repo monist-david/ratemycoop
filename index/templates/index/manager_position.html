@@ -1,6 +1,39 @@
 {% extends 'manager_base.html' %}
 
 {% block head %}
+    <style>
+    .keyword-btn {
+        margin-right: 0.8em;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        font-weight: 400;
+        font-size: 1rem;
+        border: 1.8px solid  rgb(118, 118, 118);
+        padding: .375rem .75rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+    }
+
+    .keyword-btn:hover {
+        background-color: #e8e8e8;
+    }
+
+    .kr-view {
+        padding-bottom: 1rem;
+        margin: 3rem;
+        background-color: #e8e8e8;
+        max-width: 500px;
+    }
+    .kr-view ul {
+        list-style-type: none;
+        overflow: hidden;
+        display: inline-flex;
+        justify-content: space-between;
+        padding-top: 15px;
+        padding-bottom: 10px;
+    }
+    </style>
 {% endblock %}
 
 {% block css %}
@@ -34,8 +67,117 @@
                         <h2 class="text-center mt-4 mb-5">Front-End Developer at Facebook</h2>
                     </div>
                     <div >
-                        <button class="btn btn-outline-dark mt-4 mb-5">Rating: 4.2/5</button>
+                        <button class="btn btn-outline-dark mr-3 mt-4 mb-5">Rating: 4.2/5</button>
                     </div>
+                </div>
+
+                <!-- Keyword -->
+
+                <div>
+                    <h5>Keywords:</h5>
+                    <div class="d-flex justify-content-start mb-3 mt-3">
+                        <div class="keyword-btn">Great Teamwork</div>
+                        <div class="keyword-btn">Engineering</div>
+                        <div class="keyword-btn">High Responsibility</div>
+                    </div>
+                </div>
+
+
+                <!-- Key Ratings -->
+
+
+                <div>
+                    <h5 class="mb-4">Key ratings:</h5>
+                    <div class="kr-view">
+                        <div>
+                        <ul>
+                            <li class="kr-table-left mr-5">
+                                <p class="text-center">Pro's</p>
+                                <table class="table">
+                                  <tbody>
+                                  <tr>
+                                      <td scope="col">Teamwork:</td>
+                                      <td scope="col">4.8/5</td>
+                                    </tr>
+                                    <tr>
+                                      <td scope="row">Responsibility:</td>
+                                      <td>4.6/5</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </li>
+                            <li class="kr-table-right ml-2">
+                                <p class="text-center">Cons's</p>
+                                <table class="table">
+                                  <tbody>
+                                  <tr>
+                                      <td scope="col">Inclusivity:</td>
+                                      <td scope="col">3.1/5</td>
+                                    </tr>
+                                    <tr>
+                                      <td scope="row">Diversity:</td>
+                                      <td>2.3/5</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </li>
+                        </ul>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-outline-dark">Expand</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Individual Ratings -->
+
+                <div>
+                    <h5 class="mb-4">Individual Ratings:</h5>
+
+                    <table class="table mb-5">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Rating</th>
+                      <th scope="col">Comment</th>
+                      <th scope="col">Term</th>
+                        <th scope="col">More Info</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1</th>
+                      <td>4 stars</td>
+                      <td>I had a great experience and learned a lot! Downside is the long commute from NEU</td>
+                      <td>Fall 2019</td>
+                        <td><a href="{% url "index:front-end-facebook" %}">Read More</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2</th>
+                      <td>3 stars</td>
+                      <td>Very uptight work environment, long commute and very little diversity. Worked on interesting projects!</td>
+                      <td>Spring 2017</td>
+                        <td><a href="{% url "index:front-end-facebook" %}">Read More</a></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>5 stars</td>
+                      <td>Really productive and collaborative Team that trusted in my work.</td>
+                      <td>Fall 2018</td>
+                        <td><a href="{% url "index:front-end-facebook" %}">Read More</a></td>
+                    </tr>
+                  <tr>
+                      <th scope="row">4</th>
+                      <td>5 stars</td>
+                      <td>I had lots of fun and learned a lot. I can only recommend it!</td>
+                      <td>Spring 2018</td>
+                        <td><a href="{% url "index:front-end-facebook" %}">Read More</a></td>
+                    </tr>
+                  </tbody>
+                </table>
                 </div>
 
 
