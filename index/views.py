@@ -58,8 +58,35 @@ class SearchView(ListView):
                 'company': 'ASICS',
                 'rating': '3.9',
                 'ratingID': '4',
+                'industry': '4',
+                'keyword': '4'
+            },
+            {
+                'id': 5,
+                'position': 'Software Developer',
+                'company': 'Facebook',
+                'rating': '4.8',
+                'ratingID': '5',
+                'industry': '4',
+                'keyword': '4'
+            },
+            {
+                'id': 6,
+                'position': 'Data Scientist',
+                'company': 'Facebook',
+                'rating': '4.5',
+                'ratingID': '5',
                 'industry': '7',
-                'keyword': '1'
+                'keyword': '4'
+            },
+            {
+                'id': 7,
+                'position': 'Front-End Developer',
+                'company': 'Facebook',
+                'rating': '4.2',
+                'ratingID': '5',
+                'industry': '4',
+                'keyword': '4'
             },
         ]
 
@@ -162,6 +189,10 @@ class SearchView(ListView):
             {
                 'id': '3',
                 'name': 'uptight',
+            },
+            {
+                'id': '4',
+                'name': 'great teamwork',
             }
         ]
 
