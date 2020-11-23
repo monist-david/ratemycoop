@@ -1,0 +1,149 @@
+{% extends 'student_base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'index/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'index/css/simple-sidebar.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block bodypage %}
+    <div class="d-flex" id="wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <section class="container-fluid border mt-3 col-12 col-md-10">
+                <header>
+                    <div class="row">
+                        <div class="w-100">
+                            <h1 class="bg-dark text-white text-center">Co-op Rating Form</h1>
+                        </div>
+                    </div>
+                </header>
+
+                <article id="ratingform">
+                    <form class="createratingform" role="form">
+                        <div class="row">
+                            <div class="col">
+                                <h5><strong>Software Engineering Co-op, Company X</strong> - Fall 2019</h5>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p><i>Please rate the following aspects of your co-op.</i></p>
+                            </div>
+                        </div>
+
+                        {% for c in form_categories %}
+                        <div class="form-group row">
+                            <div class="form-group col">
+                                <p class="col-form-label col-xs-12" style="padding: 0">
+                                    <strong>{{c.name}}</strong>
+                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="popover" data-html="true"
+                                            data-content=
+                                                    "<div>
+                                                    {% for p in c.popover %}
+                                                    <div><b>{{p.value}}</b>: {{p.description}}</div>
+                                                    {% endfor %}
+                                                    </div>">?</button>
+                                </p>
+                                <p class="col-form-label col-xs-12" style="padding: 0"><i>{{c.description}}</i><p/>
+                                <div class="input-group" style="display: inline-block">
+                                    {% for r in radio_buttons %}
+                                    <label class="radio-inline" for="{{c.keyword}}_{{r.keyword}}" style="margin-right: 2em">
+                                        <input type="radio" id="{{c.keyword}}_{{r.keyword}}" name="{{c.keyword}}" value="{{r.value}}" required="true">
+                                        <i></i> {{r.name}}
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                                <input class="form-control" type="text" id="{{c.keyword}}_comments" name="comments" placeholder="Additional Comments (optional)">
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <div class="form-group row">
+                            <div class="form-group col">
+                                <p class="col-form-label col-xs-12" style="padding: 0"><strong>{{culture.name}}</strong></p>
+                                <p class="col-form-label col-xs-12" style="padding: 0"><i>{{culture.description}}</i><p/>
+                                <div class="input-group" style="display: inline-block">
+                                    {% for ch in checkboxes %}
+                                    <label for="{{culture.keyword}}_{{ch.keyword}}" style="margin-right: 2em">
+                                        <input type="checkbox" id="{{culture.keyword}}_{{ch.keyword}}" name="{{culture.keyword}}" value="{{ch.value}}">
+                                        <i></i> {{ch.name}}
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                                <input class="form-control" type="text" id="{{culture.keyword}}_comments" name="comments" placeholder="Additional Comments (optional)">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="form-group col">
+                                <p class="col-form-label col-xs-12" style="padding: 0"><strong>{{overall_rating.name}}</strong></p>
+                                <p class="col-form-label col-xs-12" style="padding: 0"><i>{{overall_rating.description}}</i><p/>
+                                <div class="input-group" style="display: inline-block">
+                                    {% for ov in overall_rating_values %}
+                                    <label class="radio-inline" for="{{overall_rating.keyword}}_{{ov.keyword}}" style="margin-right: 2em">
+                                        <input type="radio" id="{{overall_rating.keyword}}_{{ov.keyword}}" name="{{overall_rating.keyword}}" value="{{ov.value}}" required="true">
+                                        <i></i> {{ov.name}}
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                                <input class="form-control" type="text" id="{{overall_rating.keyword}}_comments" name="comments" placeholder="Additional Comments">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="form-group col">
+                                <p class="col-form-label col-xs-12" style="padding: 0"><i>{{contact_opt_in.description}}</i><p/>
+                                <div class="input-group" style="display: inline-block">
+                                    {% for co in contact_opt_in_values %}
+                                    <label class="radio-inline" for="{{contact_opt_in.keyword}}_{{co.keyword}}" style="margin-right: 2em">
+                                        <input type="radio" id="{{contact_opt_in.keyword}}_{{co.keyword}}" name="{{contact_opt_in.keyword}}" value="{{co.value}}" required="true">
+                                        <i></i> {{co.name}}
+                                    </label>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="form-group col">
+                                <a href="{% url 'index:search' %}" class="btn btn-sm btn-success">Submit</a>
+                                <a href="{% url 'index:search' %}" class="btn btn-sm btn-danger">Cancel</a>
+                            </div>
+                        </div>
+
+                    </form>
+                </article>
+
+            </section>
+        </div>
+    </div>
+
+    <!-- /#page-content-wrapper -->
+{% endblock %}
+
+{% block js %}
+<script>
+$(document).ready(function(){
+  $('[data-toggle="popover"]').popover();
+});
+
+
+
+</script>
+{% endblock %}
