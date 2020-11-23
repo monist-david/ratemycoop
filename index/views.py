@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, ListView
 from django import forms
 from django.views.decorators.csrf import csrf_exempt
 from index.forms import SearchForm
@@ -8,14 +8,193 @@ from index.forms import SearchForm
 # Create your views here.
 
 
-class SearchView(TemplateView):
+class SearchView(ListView):
     template_name = "index/search.html"
+    industryID = '0'
+    keywordID = '0'
+    ratingID = '0'
 
-    def get(self, request):
-        return render(request, self.template_name)
+    def __init__(self, **kwargs):
+        super(ListView, self).__init__(**kwargs)
 
-    def post(self, request):
-        return render(request, self.template_name)
+    def setup(self, request, *args, **kwargs):
+        super(ListView, self).setup(request, *args, **kwargs)
+        self.industryID = request.GET.get("industryID", self.industryID)
+        self.keywordID = request.GET.get("keywordID", self.keywordID)
+        self.ratingID = request.GET.get("ratingID", self.ratingID)
+
+    def get_queryset(self):
+        positions = [
+            {
+                'id': 1,
+                'position': 'Data Scientist',
+                'company': 'Wayfair',
+                'rating': '4.9',
+                'ratingID': '5',
+                'industry': '7',
+                'keyword': '1'
+            },
+            {
+                'id': 2,
+                'position': 'PT Co-op',
+                'company': 'PT Arlington',
+                'rating': '4.7',
+                'ratingID': '5',
+                'industry': '8',
+                'keyword': '1'
+            },
+            {
+                'id': 3,
+                'position': 'UI/UX Design Co-op',
+                'company': 'NetBrain',
+                'rating': '4.7',
+                'ratingID': '5',
+                'industry': '2',
+                'keyword': '2'
+            },
+            {
+                'id': 4,
+                'position': 'Software Engineering Co-op',
+                'company': 'ASICS',
+                'rating': '3.9',
+                'ratingID': '4',
+                'industry': '7',
+                'keyword': '1'
+            },
+        ]
+
+        qs = []
+        if self.industryID != '0':
+            filtered_positions = []
+            for p in positions:
+                if p.get('industry') == self.industryID:
+                    filtered_positions.append(p)
+            qs = filtered_positions
+
+
+        if self.keywordID != '0':
+            filter_keywords = []
+            positions_to_filter = []
+            if qs == []:
+                positions_to_filter = positions
+            else:
+                positions_to_filter = qs
+
+            for p in positions_to_filter:
+                if p.get('keyword') == self.keywordID:
+                    filter_keywords.append(p)
+
+            qs = filter_keywords
+
+        if self.ratingID != '0':
+            filter_keywords = []
+            positions_to_filter = []
+            if qs == []:
+                positions_to_filter = positions
+            else:
+                positions_to_filter = qs
+
+            for p in positions_to_filter:
+                if p.get('ratingID') == self.ratingID:
+                    filter_keywords.append(p)
+
+            qs = filter_keywords
+
+        if qs == []:
+            qs = positions
+
+        return qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        industry_list = [
+            {
+                'id': '1',
+                'name': 'Accounting',
+                'abbrev': 'acct',
+            },
+            {
+                'id': '2',
+                'name': 'Arts & Design',
+                'abbrev': 'a_and_d',
+            },
+            {
+                'id': '3',
+                'name': 'Cybersecurity',
+                'abbrev': 'cyber',
+            },
+            {
+                'id': '4',
+                'name': 'Engineering',
+                'abbrev': 'eng',
+            },
+            {
+                'id': '5',
+                'name': 'Finance',
+                'abbrev': 'fin',
+            },
+            {
+                'id': '6',
+                'name': 'Human Resources',
+                'abbrev': 'hr',
+            },
+            {
+                'id': '7',
+                'name': 'Information Technology',
+                'abbrev': 'it',
+            },
+            {
+                'id': '8',
+                'name': 'Physical Therapy',
+                'abbrev': 'pt',
+            },
+        ]
+
+        keyword_list = [
+            {
+                'id': '1',
+                'name': 'fun',
+            },
+            {
+                'id': '2',
+                'name': 'hardworking',
+            },
+            {
+                'id': '3',
+                'name': 'uptight',
+            }
+        ]
+
+        rating_list = [
+            {
+                'id': '1',
+                'name': '0-0.99',
+            },
+            {
+                'id': '2',
+                'name': '1.00-1.99',
+            },
+            {
+                'id': '3',
+                'name': '2.00-2.99',
+            },
+            {
+                'id': '4',
+                'name': '3.00-3.99',
+            },
+            {
+                'id': '5',
+                'name': '4.00-5.00',
+            }
+        ]
+
+        context['industryID'] = self.industryID
+        context['industries'] = industry_list
+        context['keywordID'] = self.keywordID
+        context['keywords'] = keyword_list
+        context['ratingID'] = self.ratingID
+        context['ratings'] = rating_list
+        return context
 
 
 class IndexView(TemplateView):
@@ -354,3 +533,13 @@ class RatingFormView(FormView):
         context['contact_opt_in'] = contact_opt_in
         context['contact_opt_in_values'] = contact_opt_in_values
         return context
+
+
+class ConstructionView(TemplateView):
+    template_name = "index/construction.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
