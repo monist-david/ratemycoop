@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import SearchView,  IndexView, ManagerView, PositionView
+from .views import SearchView,  IndexView, RatingFormView
 
 app_name = 'index'
 urlpatterns = [
@@ -7,4 +8,5 @@ urlpatterns = [
     path('search/', SearchView.as_view(), name='search'),
     path('manager/', ManagerView.as_view(), name='manager'),
     path('front-end-facebook/', PositionView.as_view(), name='front-end-facebook'),
+    path('ratingform/', RatingFormView.as_view(), name='ratingform'),
 ]
