@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import SearchView,  IndexView, ManagerView, PositionView
-from .views import SearchView,  IndexView, RatingFormView
+from .views import SearchView,  IndexView, ManagerView, PositionView, RatingFormView
 
 app_name = 'index'
 urlpatterns = [
