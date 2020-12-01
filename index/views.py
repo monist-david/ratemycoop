@@ -255,6 +255,15 @@ class FrontEndFacebook(TemplateView):
     def post(self, request):
         return render(request, self.template_name)
 
+class DataScienceFacebook(TemplateView):
+    template_name = "index/co-op positions/DataScientist_Facebook.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
+
 class SoftDevFacebook(TemplateView):
     template_name = "index/co-op positions/SoftDev_Facebook.html"
 
