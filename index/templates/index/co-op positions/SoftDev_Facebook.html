@@ -33,6 +33,22 @@
         padding-top: 15px;
         padding-bottom: 10px;
     }
+    .rating-btn {
+        display: flex;
+        margin-top: 1em;
+        margin-right: 0.8em;
+        flex-direction: column;
+        background-color: #fff;
+        font-weight: 400;
+        font-size: 1.7em;
+        border: 2px solid  rgb(118, 118, 118);
+        padding: .375rem .75rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+    }
+
+    .rating-btn:hover {
+        background-color: #e8e8e8;
     </style>
 {% endblock %}
 
@@ -64,10 +80,10 @@
                         <a class="btn btn-secondary mt-4 mb-5" href="{% url "index:manager" %}"> <- Back</a>
                     </div>
                     <div >
-                        <h2 class="text-center mt-4 mb-5">Front-End Developer at Facebook</h2>
+                        <h2 class="text-center mt-4 mb-5">Software Developer at Facebook</h2>
                     </div>
                     <div >
-                        <button class="btn btn-outline-dark mr-3 mt-4 mb-5">Rating: 4.2/5</button>
+                        <div class="rating-btn ">Rating: 4.8/5</div>
                     </div>
                 </div>
 
@@ -96,12 +112,12 @@
                                 <table class="table table-hover" >
                                   <tbody>
                                   <tr>
-                                      <td scope="col">Teamwork:</td>
-                                      <td scope="col">4.8/5</td>
+                                      <td scope="col">Responsibility:</td>
+                                      <td scope="col">5.0/5</td>
                                     </tr>
                                     <tr>
-                                      <td scope="row">Responsibility:</td>
-                                      <td>4.6/5</td>
+                                      <td scope="row">Team Work:</td>
+                                      <td>4.9/5</td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -112,11 +128,11 @@
                                   <tbody>
                                   <tr>
                                       <td scope="col">Inclusivity:</td>
-                                      <td scope="col">3.1/5</td>
+                                      <td scope="col">4.0/5</td>
                                     </tr>
                                     <tr>
                                       <td scope="row">Diversity:</td>
-                                      <td>2.3/5</td>
+                                      <td>3.5/5</td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -141,15 +157,15 @@
                                       <tbody>
                                       <tr>
                                           <td scope="col">Responsibility:</td>
-                                          <td scope="col">4.8/5</td>
+                                          <td scope="col">5.0/5</td>
                                         </tr>
                                         <tr>
                                           <td scope="row">Compensation:</td>
-                                          <td>4.2/5</td>
+                                          <td>5.0/5</td>
                                         </tr>
                                       <tr>
                                           <td scope="row">Benefits:</td>
-                                          <td>4.0/5</td>
+                                          <td>5.0/5</td>
                                         </tr>
                                       <tr>
                                           <td scope="row">Teamwork:</td>
@@ -157,7 +173,7 @@
                                         </tr>
                                       <tr>
                                           <td scope="row">Supervisors:</td>
-                                          <td>4.3/5</td>
+                                          <td>4.5/5</td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -167,23 +183,23 @@
                                       <tbody>
                                       <tr>
                                           <td scope="col">Growth Opportunity:</td>
-                                          <td scope="col">4.5/5</td>
+                                          <td scope="col">4.8/5</td>
                                         </tr>
                                         <tr>
                                           <td scope="row">Culture:</td>
-                                          <td>4.0/5</td>
+                                          <td>n/a</td>
                                         </tr>
                                       <tr>
                                           <td scope="row">Working Hours:</td>
-                                          <td>3.3/5</td>
+                                          <td>4.3/5</td>
                                         </tr>
                                       <tr>
                                           <td scope="row">Inclusivity:</td>
-                                          <td>3.1/5</td>
+                                          <td>4.0/5</td>
                                         </tr>
                                       <tr>
                                           <td scope="row">Diversity:</td>
-                                          <td>2.3/5</td>
+                                          <td>3.5/5</td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -216,31 +232,31 @@
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
-                      <td>4 stars</td>
-                      <td>I had a great experience and learned a lot! Downside is the long commute from NEU</td>
+                      <td>5 stars</td>
+                      <td>I had the most amazing experience learning from great minds at Facebook! Great Co-op!</td>
                       <td>Fall 2019</td>
-                        <td><a href="{% url "index:front-end-facebook" %}">Read More</a></td>
+                        <td>Read More</td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
-                      <td>3 stars</td>
-                      <td>Very uptight work environment, long commute and very little diversity. Worked on interesting projects!</td>
+                      <td>4 stars</td>
+                      <td>Overall great experience! I learned a lot, great mentors but sometimes too uptight.</td>
                       <td>Spring 2017</td>
-                        <td><a href="{% url "index:front-end-facebook" %}">Read More</a></td>
+                        <td>Read More</td>
                     </tr>
                     <tr>
                       <th scope="row">3</th>
                       <td>5 stars</td>
-                      <td>Really productive and collaborative Team that trusted in my work.</td>
+                      <td>I had lots of fun and learned a lot. I can only recommend it!</td>
                       <td>Fall 2018</td>
-                        <td><a href="{% url "index:front-end-facebook" %}">Read More</a></td>
+                        <td>Read More</td>
                     </tr>
                   <tr>
                       <th scope="row">4</th>
                       <td>5 stars</td>
-                      <td>I had lots of fun and learned a lot. I can only recommend it!</td>
+                      <td>It couldn't have been better. If you get the chance to do this co-op don't hesitate!</td>
                       <td>Spring 2018</td>
-                        <td><a href="{% url "index:front-end-facebook" %}">Read More</a></td>
+                        <td>Read More</td>
                     </tr>
                   </tbody>
                 </table>
