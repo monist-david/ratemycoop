@@ -63,7 +63,7 @@ class SearchView(ListView):
                 'ratingID': '4',
                 'industry': '4',
                 'keyword': '4',
-                'link': '../construction/'
+                'link': 'soft-eng-ASICS/'
             },
             {
                 'id': 5,
@@ -298,6 +298,15 @@ class DataScienceFacebookStudent(TemplateView):
 
 class SoftDevFacebookStudent(TemplateView):
     template_name = "index/co-op positions/SoftDev_Facebook_Student.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
+
+class SoftDevASICSStudent(TemplateView):
+    template_name = "index/co-op positions/SoftDev_ASICS_Student.html"
 
     def get(self, request):
         return render(request, self.template_name)
