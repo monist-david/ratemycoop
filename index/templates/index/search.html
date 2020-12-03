@@ -41,98 +41,104 @@
 
 {% block bodypage %}
 
-<div class="d-flex" id="wrapper">
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <section class="container-fluid mt-3 col-12 col-md-11">
-            <header>
-                <div class="row">
-                    <div class="col-9">
-                        <h3 >Co-op Rating Form</h3>
-                    </div>
-                </div>
-            </header>
-
-            <hr>
-
-            <article class="row bg-white mx-4">
-                <form id="filterForm" method="get">
-                    <div class="form-group row">
-                        <div class="col">
-                            <b>Industry</b>
-                            <br>
-                            <select id="industryID" name="industryID" onChange="ChangeIndustry();" >
-                                <option value="0"></option>
-                                {% for i in industries %}
-                                <option value="{{ i.id }}"{% if i.id == industryID %}selected{% endif %}>
-                                    {{ i.name }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col">
-                            <b>Keyword</b>
-                            <br>
-                            <select id="keywordID" name="keywordID" onChange="ChangeKeyword();" >
-                                <option value="0"></option>
-                                {% for k in keywords %}
-                                <option value="{{ k.id }}"{% if k.id == keywordID %}selected{% endif %}>
-                                    {{ k.name }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col">
-                            <b>Overall Rating</b>
-                            <br>
-                            <select id="ratingID" name="ratingID" onChange="ChangeRating();" >
-                                <option value="0"></option>
-                                {% for r in ratings %}
-                                <option value="{{ r.id }}"{% if r.id == ratingID %}selected{% endif %}>
-                                    {{ r.name }}
-                                </option>
-                                {% endfor %}
-                            </select>
+    <div class="d-flex" id="wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <section class="container-fluid mt-3 col-12 col-md-11">
+                <header>
+                    <div class="row">
+                        <div class="col-9">
+                            <h3>Search Your Co-op</h3>
                         </div>
                     </div>
-                    <div class="form-group row">
-                        <div class="col">
-                            <input type="submit" id="btnSearch" class="btn btn-primary btn-sm" value="Search">
+                </header>
+
+                <hr>
+
+                <article class="row bg-white mx-4">
+                    <form id="filterForm" method="get">
+                        <div class="form-group row">
+                            <div class="col">
+                                <b>Industry</b>
+                                <br>
+                                <select id="industryID" name="industryID" onChange="ChangeIndustry();">
+                                    <option value="0"></option>
+                                    {% for i in industries %}
+                                        <option value="{{ i.id }}" {% if i.id == industryID %}selected{% endif %}>
+                                            {{ i.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col">
+                                <b>Keyword</b>
+                                <br>
+                                <select id="keywordID" name="keywordID" onChange="ChangeKeyword();">
+                                    <option value="0"></option>
+                                    {% for k in keywords %}
+                                        <option value="{{ k.id }}" {% if k.id == keywordID %}selected{% endif %}>
+                                            {{ k.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col">
+                                <b>Overall Rating</b>
+                                <br>
+                                <select id="ratingID" name="ratingID" onChange="ChangeRating();">
+                                    <option value="0"></option>
+                                    {% for r in ratings %}
+                                        <option value="{{ r.id }}" {% if r.id == ratingID %}selected{% endif %}>
+                                            {{ r.name }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </article>
+                        <div class="form-group row">
+                            <div class="col">
+                                <a type="reset" href="{% url 'index:search' %}" class="btn btn-primary btn-sm">Reset</a>
+                            </div>
+                            <div class="col">
+                                <input type="submit" id="btnSearch" class="btn btn-primary btn-sm" value="Search">
+                            </div>
+                        </div>
+                    </form>
+                </article>
 
-            <hr>
+                <hr>
 
-            <article class="row bg-white mx-2">
-                <table class="table">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th>Position</th>
-                        <th>Company</th>
-                        <th>Rating</th>
-                        <th>Link</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% if object_list.count == 0 %}
-                    <tr><td>There are no co-ops with these filters.</td></tr>
+                <article class="row bg-white mx-2">
+                    {% if object_list|length == 0 %}
+                        <tr>
+                            <td>There are no co-ops with these filters.</td>
+                        </tr>
+                    {% else %}
+                        <table class="table">
+                            <thead class="thead-dark">
+                            <tr>
+                                <th>Position</th>
+                                <th>Company</th>
+                                <th>Rating</th>
+                                <th>Link</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for c in object_list %}
+                                <tr>
+                                    <td>{{ c.position }}</td>
+                                    <td>{{ c.company }}</td>
+                                    <td>{{ c.rating }}/5</td>
+                                    <td>Click to view more</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
                     {% endif %}
-                    {% for c in object_list %}
-                    <tr>
-                        <td>{{ c.position }}</td>
-                        <td>{{ c.company }}</td>
-                        <td>{{ c.rating }}/5</td>
-                        <td>Click to view more</td>
-                    </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </article>
-        </section>
+                </article>
+            </section>
         </div>
-</div>
+    </div>
     <!-- /#page-content-wrapper -->
 {% endblock %}
 
@@ -140,18 +146,18 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-    function ChangeIndustry() {
-        document.forms['industryID'].submit();
-    }
+    <script>
+        function ChangeIndustry() {
+            document.forms['industryID'].submit();
+        }
 
-    function ChangeKeyword() {
-        document.forms['keywordID'].submit();
-    }
+        function ChangeKeyword() {
+            document.forms['keywordID'].submit();
+        }
 
-    function ChangeRating() {
-        document.forms['ratingID'].submit();
-    }
+        function ChangeRating() {
+            document.forms['ratingID'].submit();
+        }
 
-</script>
+    </script>
 {% endblock %}

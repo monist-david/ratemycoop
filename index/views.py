@@ -89,7 +89,6 @@ class SearchView(ListView):
                 'keyword': '4'
             },
         ]
-
         qs = []
         if self.industryID != '0':
             filtered_positions = []
@@ -98,38 +97,31 @@ class SearchView(ListView):
                     filtered_positions.append(p)
             qs = filtered_positions
 
-
         if self.keywordID != '0':
             filter_keywords = []
             positions_to_filter = []
             if qs == []:
-                positions_to_filter = positions
+                return qs
             else:
                 positions_to_filter = qs
 
             for p in positions_to_filter:
                 if p.get('keyword') == self.keywordID:
                     filter_keywords.append(p)
-
             qs = filter_keywords
 
         if self.ratingID != '0':
             filter_keywords = []
             positions_to_filter = []
             if qs == []:
-                positions_to_filter = positions
+                return qs
             else:
                 positions_to_filter = qs
 
             for p in positions_to_filter:
                 if p.get('ratingID') == self.ratingID:
                     filter_keywords.append(p)
-
             qs = filter_keywords
-
-        if qs == []:
-            qs = positions
-
         return qs
 
     def get_context_data(self, **kwargs):
@@ -237,6 +229,7 @@ class IndexView(TemplateView):
     def post(self, request):
         return render(request, self.template_name)
 
+
 class ManagerView(TemplateView):
     template_name = "index/manager.html"
 
@@ -245,6 +238,7 @@ class ManagerView(TemplateView):
 
     def post(self, request):
         return render(request, self.template_name)
+
 
 class FrontEndFacebook(TemplateView):
     template_name = "index/co-op positions/FrontEnd_Facebook.html"
@@ -255,6 +249,7 @@ class FrontEndFacebook(TemplateView):
     def post(self, request):
         return render(request, self.template_name)
 
+
 class DataScienceFacebook(TemplateView):
     template_name = "index/co-op positions/DataScientist_Facebook.html"
 
@@ -264,6 +259,7 @@ class DataScienceFacebook(TemplateView):
     def post(self, request):
         return render(request, self.template_name)
 
+
 class SoftDevFacebook(TemplateView):
     template_name = "index/co-op positions/SoftDev_Facebook.html"
 
@@ -272,6 +268,7 @@ class SoftDevFacebook(TemplateView):
 
     def post(self, request):
         return render(request, self.template_name)
+
 
 class CreateRatingForm(forms.Form):
     comments = forms.CharField(required=False)
@@ -487,9 +484,9 @@ class RatingFormView(FormView):
         ]
 
         culture = {
-                'name': 'Culture',
-                'description': "Please select keywords that describe your team's culture. You can select as many or as few as desired.",
-                'keyword': 'culture',
+            'name': 'Culture',
+            'description': "Please select keywords that describe your team's culture. You can select as many or as few as desired.",
+            'keyword': 'culture',
         }
 
         checkboxes = [
