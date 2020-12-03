@@ -1,0 +1,493 @@
+{% extends 'student_base.html' %}
+
+{% block head %}
+    <style>
+    .keyword-btn {
+        margin-right: 0.8em;
+        display: flex;
+        flex-direction: column;
+        background-color: #fff;
+        font-weight: 400;
+        font-size: 1rem;
+        border: 1.8px solid  rgb(118, 118, 118);
+        padding: .375rem .75rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+    }
+
+    .keyword-btn:hover {
+        background-color: #e8e8e8;
+    }
+
+    .kr-view {
+        padding-bottom: 1rem;
+        margin: 3rem;
+        background-color: #f2f2f2;
+        max-width: 550px;
+    }
+    .kr-view ul {
+        list-style-type: none;
+        overflow: hidden;
+        display: inline-flex;
+        justify-content: space-between;
+        padding-top: 15px;
+        padding-bottom: 10px;
+    }
+
+    .ir-view {
+        margin: 2rem;
+    }
+    .ir-view ul {
+        list-style-type: none;
+        overflow: hidden;
+        display: flex;
+        justify-content: space-evenly;
+        padding-top: 15px;
+        padding-bottom: 10px;
+        padding-inline-start: 0px;
+    }
+
+    .rating-btn {
+        display: flex;
+        margin-top: 1em;
+        margin-right: 0.8em;
+        flex-direction: column;
+        background-color: #fff;
+        font-weight: 400;
+        font-size: 1.7em;
+        border: 2px solid  rgb(118, 118, 118);
+        padding: .375rem .75rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+    }
+
+    .rating-btn:hover {
+        background-color: #e8e8e8;
+    }
+    </style>
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'index/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'index/css/simple-sidebar.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+{% block bodypage %}
+    <div class="d-flex ml-4 mr-5" id="wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+
+                <!-- Head -->
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <a class="btn btn-secondary mt-4 mb-5" href="{% url "index:manager" %}"> <- Back</a>
+                    </div>
+                    <div >
+                        <h2 class="text-center mt-4 mb-5">Front-End Developer at Facebook</h2>
+                    </div>
+                    <div>
+                        <div class="rating-btn">Rating: 4.2/5</div>
+                    </div>
+                </div>
+
+                <!-- Keyword -->
+
+                <div>
+                    <h5>Keywords:</h5>
+                    <div class="d-flex justify-content-start mb-3 mt-3">
+                        <div class="keyword-btn">Great Teamwork</div>
+                        <div class="keyword-btn">Engineering</div>
+                        <div class="keyword-btn">High Responsibility</div>
+                    </div>
+                </div>
+
+
+                <!-- Key Ratings -->
+                <div>
+                    <h5 class="mb-4">Key ratings:</h5>
+                    <div class="kr-view">
+                        <div>
+                        <ul>
+                            <li class="kr-table-left mr-5">
+                                <p class="text-center">Pro's</p>
+                                <table class="table table-hover" >
+                                  <tbody>
+                                  <tr>
+                                      <td scope="col">Teamwork:</td>
+                                      <td scope="col">4.8/5</td>
+                                    </tr>
+                                    <tr>
+                                      <td scope="row">Responsibility:</td>
+                                      <td>4.6/5</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </li>
+                            <li class="kr-table-right ml-2">
+                                <p class="text-center">Cons's</p>
+                                <table class="table table-hover">
+                                  <tbody>
+                                  <tr>
+                                      <td scope="col">Inclusivity:</td>
+                                      <td scope="col">3.1/5</td>
+                                    </tr>
+                                    <tr>
+                                      <td scope="row">Diversity:</td>
+                                      <td>2.3/5</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
+                            </li>
+                        </ul>
+                        </div>
+
+                        <div class="text-center">
+                            <button class="btn btn-outline-dark" data-toggle="collapse" href="#collapseExample"
+                                    role="button" aria-expanded="false" aria-controls="collapseExample">More Ratings</button>
+                        </div>
+
+
+                        <div class="collapse" id="collapseExample">
+                          <div>
+                             <h6 class="text-center mt-3">All Categories</h6>
+                                <ul>
+
+                                <li class="kr-table-left mr-5">
+
+                                    <table class="table table-hover" >
+                                      <tbody>
+                                      <tr>
+                                          <td scope="col">Responsibility:</td>
+                                          <td scope="col">4.8/5</td>
+                                        </tr>
+                                        <tr>
+                                          <td scope="row">Compensation:</td>
+                                          <td>4.2/5</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Benefits:</td>
+                                          <td>4.0/5</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Teamwork:</td>
+                                          <td>4.9/5</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Supervisors:</td>
+                                          <td>4.3/5</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                </li>
+                                <li class="kr-table-right ml-2">
+                                    <table class="table table-hover">
+                                      <tbody>
+                                      <tr>
+                                          <td scope="col">Growth Opportunity:</td>
+                                          <td scope="col">4.5/5</td>
+                                        </tr>
+                                        <tr>
+                                          <td scope="row">Culture:</td>
+                                          <td>n/a</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Working Hours:</td>
+                                          <td>3.3/5</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Inclusivity:</td>
+                                          <td>3.1/5</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Diversity:</td>
+                                          <td>2.3/5</td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                </li>
+                            </ul>
+                        </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- Individual Ratings -->
+                <div>
+                    <h5 class="mb-4">Individual Ratings:</h5>
+
+                    <table class="table table-bordered table-striped mb-5" style="border-collapse: collapse">
+                    <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Rating</th>
+                      <th scope="col">Comment</th>
+                      <th scope="col">Term</th>
+                        <th scope="col">More Info</th>
+                    </tr>
+                    </thead>
+                        <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>3 stars</td>
+                          <td>Uptight but productive work environment. Long commute and very little diversity. Worked on interesting projects though!</td>
+                          <td>Fall 2019</td>
+                            <td><a data-toggle="modal" href="" data-target="#rating2">
+                                    Read More</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>4 stars</td>
+                            <td>I had a great experience and learned a lot! Downside is the long commute from NEU</td>
+                            <td>Spring 2019</td>
+                            <td><a data-toggle="modal" href="" data-target="#underConstr">
+                                Read More</a></td>
+                        </tr>
+                    <tr>
+                      <th scope="row">3</th>
+                      <td>5 stars</td>
+                      <td>Really productive and collaborative Team that trusted in my work.</td>
+                        <td>Fall 2018</td>
+                     <td><a data-toggle="modal" href="" data-target="#underConstr">
+                                Read More</a></td>
+                    </tr>
+                  <tr>
+                      <th scope="row">4</th>
+                      <td>5 stars</td>
+                      <td>I had lots of fun and learned a lot. I can only recommend it!</td>
+                      <td>Fall 2017</td>
+                        <td><a data-toggle="modal" href="" data-target="#underConstr">
+                                Read More</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+                </div>
+
+                <!-- In depth Ratings-->
+                <div class="modal fade" id="rating2" tabindex="-1" aria-labelledby="rating2" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title ml-3" id="rating2">Individual Rating</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                          <div class="ir-view">
+                             <h6 class="text-center mb-2">All Categories</h6>
+                                <ul>
+                                <li class="ir-table-left ">
+
+                                    <table class="table table-hover" >
+                                      <tbody>
+                                      <tr>
+                                          <td>Responsibility:</td>
+                                          <td>5/5</td>
+                                          <td><a data-toggle="collapse" href="#responsibility"
+                                    role="button" aria-expanded="True" aria-controls="collapseExample">comment</a></td>
+                                        </tr>
+                                        <tr>
+                                          <td scope="row">Compensation:</td>
+                                          <td>4/5</td>
+                                            <td><a data-toggle="collapse" href="#compensation"
+                                    role="button" aria-expanded="false" aria-controls="collapseExample">comment</a></td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Benefits:</td>
+                                          <td>4/5</td>
+                                          <td><a data-toggle="collapse" href="#benefits"
+                                    role="button" aria-expanded="false" aria-controls="collapseExample">comment</a></td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Teamwork:</td>
+                                          <td>5/5</td>
+                                          <td>comment</td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Supervisors:</td>
+                                          <td>3/5</td>
+                                          <td><a data-toggle="collapse" href="#supervisors"
+                                    role="button" aria-expanded="false" aria-controls="collapseExample">comment</a></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                </li>
+                                <li class="ir-table-right ml-2">
+                                    <table class="table table-hover">
+                                      <tbody>
+                                      <tr>
+                                          <td scope="col">Growth Opportunity:</td>
+                                          <td scope="col">4/5</td>
+                                          <td><a data-toggle="collapse" href="#growthopportunity"
+                                    role="button" aria-expanded="false" aria-controls="collapseExample">comment</a></td>
+                                        </tr>
+                                        <tr>
+                                          <td scope="row">Culture:</td>
+                                          <td>n/a</td>
+                                            <td><a data-toggle="collapse" href="#culture"
+                                    role="button" aria-expanded="false" aria-controls="collapseExample">categories</a></td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Working Hours:</td>
+                                          <td>2/5</td>
+                                          <td><a data-toggle="collapse" href="#workinghours"
+                                    role="button" aria-expanded="false" aria-controls="collapseExample">comment</a></td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Inclusivity:</td>
+                                          <td>3/5</td>
+                                          <td><a data-toggle="collapse" href="#inclusivity"
+                                    role="button" aria-expanded="false" aria-controls="collapseExample">comment</a></td>
+                                        </tr>
+                                      <tr>
+                                          <td scope="row">Diversity:</td>
+                                          <td>1/5</td>
+                                          <td><a data-toggle="collapse" href="#diversity"
+                                    role="button" aria-expanded="false" aria-controls="collapseExample">comment</a></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                </li>
+                            </ul>
+                              <!-- Collapsible Ratings -->
+                              <div class="collapse ml-4 mr-4" id="culture">
+                                  <button class="close" data-toggle="collapse" href="#culture" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  <h6 class="text-center">Culture Values</h6>
+                                  <div class="d-flex justify-content-start mb-3 mt-3">
+                                    <div class="keyword-btn">Uptight</div>
+                                    <div class="keyword-btn">Hardworking</div>
+                                    <div class="keyword-btn">Creative</div>
+                                      <div class="keyword-btn">Collaborative</div>
+                                </div>
+                              </div>
+                            <div class="collapse ml-4 mr-4" id="responsibility">
+                                <button class="close" data-toggle="collapse" href="#responsibility" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                <h6 class="text-center">Responsibility</h6>
+                                <p  style="font-style: italic;">"After a week of adjusting to to the firm and position, I already received tasks
+                                to contribute to a large code base for a website. I felt quite overwhelmed by the pressure of
+                                performing well and fast but over time I was able to adjust"</p>
+                            </div>
+                              <div class="collapse ml-4 mr-4" id="compensation">
+                                  <button class="close" data-toggle="collapse" href="#compensation" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  <h6 class="text-center">Compensation</h6>
+                                  <p  style="font-style: italic;">"I received slightly above average salary for a co-op
+                                      position in this field."
+                                  </p>
+                              </div>
+                              <div class="collapse ml-4 mr-4" id="benefits">
+                                  <button class="close" data-toggle="collapse" href="#benefits" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  <h6 class="text-center">Benefits</h6>
+                                  <p  style="font-style: italic;">"The position came with nice convenient such as a free T-Pass
+                                      and free lunch "
+                                  </p>
+                              </div>
+                              <div class="collapse ml-4 mr-4" id="workinghours">
+                                  <button class="close" data-toggle="collapse" href="#workinghours" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  <h6 class="text-center">Working Hours</h6>
+                                  <p  style="font-style: italic;">"They were very strict about there hours and always started
+                                      an hour earlier than average from 8 am to 4 pm. For someone who has to commute far (1hr)
+                                      and is not a morning person
+                                      this was always tough."
+                                  </p>
+                              </div>
+                              <div class="collapse ml-4 mr-4" id="supervisors">
+                                  <button class="close" data-toggle="collapse" href="#supervisors" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  <h6 class="text-center">Supervisors</h6>
+                                  <p  style="font-style: italic;">"My supervisor helped me adjust into my work space  well
+                                      during the first two weeks. After that however, he started to go about doing his own things
+                                      and wasn't really accessible for help or resources anymore.
+                                      It felt like he didn't really care about my work or what I was doing."
+                                  </p>
+                              </div>
+                              <div class="collapse ml-4 mr-4" id="growthopportunity">
+                                  <button class="close" data-toggle="collapse" href="#growthopportunity" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  <h6 class="text-center">Growth Opportunity</h6>
+                                  <p  style="font-style: italic;">"Although my supervisor wasn't a helpful resource, my
+                                      team mates appreciated my work and were open for any questions. I was given high responsibility
+                                      and challenging tasks and therefore I think I learned a lot."
+                                  </p>
+                              </div>
+                              <div class="collapse ml-4 mr-4" id="diversity">
+                                  <button class="close" data-toggle="collapse" href="#diversity" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  <h6 class="text-center">Diversity</h6>
+                                  <p  style="font-style: italic;">"Probably one of the biggest issues at Facebook or at least
+                                      in my department was diversity. It doesn't directly bother me to only work with predominantly
+                                      white men and I am one of them. However, it concerns me that I only saw such little cultural or
+                                      racial diversity at my work place. In my past at Northeastern working with in diverse groups
+                                      especially in creative domains has been really eye opening for some topics and for my future
+                                      work place I would like to see that."
+                                  </p>
+                              </div>
+                              <div class="collapse ml-4 mr-4" id="inclusivity">
+                                  <button class="close" data-toggle="collapse" href="#inclusivity" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                                  <h6 class="text-center">Inclusivity</h6>
+                                  <p  style="font-style: italic;">"Although my team consisted of open-minded and welcoming people,
+                                      I don't think you can consider yourself inclusive if the department consists of almost only white males"
+                                  </p>
+                              </div>
+                  </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Under construction Modal-->
+                <div class="modal fade" id="underConstr" tabindex="-1" aria-labelledby="rating2" aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="underConstr">Individual Rating</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <h4 class="text-center">This Modal is still under construction</h4>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+{% endblock %}

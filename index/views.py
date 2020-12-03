@@ -32,7 +32,8 @@ class SearchView(ListView):
                 'rating': '4.9',
                 'ratingID': '5',
                 'industry': '7',
-                'keyword': '1'
+                'keyword': '1',
+                'link': '../construction/'
             },
             {
                 'id': 2,
@@ -41,7 +42,8 @@ class SearchView(ListView):
                 'rating': '4.7',
                 'ratingID': '5',
                 'industry': '8',
-                'keyword': '1'
+                'keyword': '1',
+                'link': '../construction/'
             },
             {
                 'id': 3,
@@ -50,7 +52,8 @@ class SearchView(ListView):
                 'rating': '4.7',
                 'ratingID': '5',
                 'industry': '2',
-                'keyword': '2'
+                'keyword': '2',
+                'link': '../construction/'
             },
             {
                 'id': 4,
@@ -59,7 +62,8 @@ class SearchView(ListView):
                 'rating': '3.9',
                 'ratingID': '4',
                 'industry': '4',
-                'keyword': '4'
+                'keyword': '4',
+                'link': '../construction/'
             },
             {
                 'id': 5,
@@ -68,7 +72,8 @@ class SearchView(ListView):
                 'rating': '4.8',
                 'ratingID': '5',
                 'industry': '4',
-                'keyword': '4'
+                'keyword': '4',
+                'link': 'soft-dev-facebook/'
             },
             {
                 'id': 6,
@@ -77,7 +82,8 @@ class SearchView(ListView):
                 'rating': '4.5',
                 'ratingID': '5',
                 'industry': '7',
-                'keyword': '4'
+                'keyword': '4',
+                'link': 'data-scientist-facebook/'
             },
             {
                 'id': 7,
@@ -86,7 +92,8 @@ class SearchView(ListView):
                 'rating': '4.2',
                 'ratingID': '5',
                 'industry': '4',
-                'keyword': '4'
+                'keyword': '4',
+                'link': 'front-end-facebook/'
             },
         ]
         qs = []
@@ -241,7 +248,7 @@ class ManagerView(TemplateView):
 
 
 class FrontEndFacebook(TemplateView):
-    template_name = "index/co-op positions/FrontEnd_Facebook.html"
+    template_name = "index/co-op positions/FrontEnd_Facebook_Manager.html"
 
     def get(self, request):
         return render(request, self.template_name)
@@ -251,7 +258,7 @@ class FrontEndFacebook(TemplateView):
 
 
 class DataScienceFacebook(TemplateView):
-    template_name = "index/co-op positions/DataScientist_Facebook.html"
+    template_name = "index/co-op positions/DataScientist_Facebook_Manager.html"
 
     def get(self, request):
         return render(request, self.template_name)
@@ -261,7 +268,36 @@ class DataScienceFacebook(TemplateView):
 
 
 class SoftDevFacebook(TemplateView):
-    template_name = "index/co-op positions/SoftDev_Facebook.html"
+    template_name = "index/co-op positions/SoftDev_Facebook_Manager.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
+
+class FrontEndFacebookStudent(TemplateView):
+    template_name = "index/co-op positions/FrontEnd_Facebook_Student.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
+
+
+class DataScienceFacebookStudent(TemplateView):
+    template_name = "index/co-op positions/DataScientist_Facebook_Student.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
+
+
+class SoftDevFacebookStudent(TemplateView):
+    template_name = "index/co-op positions/SoftDev_Facebook_Student.html"
 
     def get(self, request):
         return render(request, self.template_name)
