@@ -30,11 +30,11 @@
             padding: 8px;
         }
 
-        {##}
+        /* {##}
         {#tr:nth-child(even) {#}
         {#    background-color: #dddddd;#}
         {
-        #}#}
+        #}#} */
     </style>
 
 {% endblock %}
@@ -48,7 +48,7 @@
                 <header>
                     <div class="row">
                         <div class="col-9">
-                            <h3>Search Your Co-op</h3>
+                            <h3>Search Co-op Positions</h3>
                         </div>
                     </div>
                 </header>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col">
-                                <a type="reset" href="{% url 'index:search' %}" class="btn btn-primary btn-sm">Reset</a>
+                                <a href="{% url 'index:search' %}" class="btn btn-warning btn-sm">Reset</a>
                             </div>
                             <div class="col">
                                 <input type="submit" id="btnSearch" class="btn btn-primary btn-sm" value="Search">
@@ -111,25 +111,28 @@
                 <article class="row bg-white mx-2">
                     {% if object_list|length == 0 %}
                         <tr>
-                            <td>There are no co-ops with these filters.</td>
+                            <td>There are no co-op positions with these filters.</td>
                         </tr>
                     {% else %}
+                    <span><b>{{ object_list|length }} Position{% if object_list|length > 1%}s{% endif %}</b></span>
                         <table class="table">
                             <thead class="thead-dark">
                             <tr>
+                                <th>#</th>
                                 <th>Position</th>
                                 <th>Company</th>
                                 <th>Rating</th>
-                                <th>Link</th>
+                                <th>Details</th>
                             </tr>
                             </thead>
                             <tbody>
                             {% for c in object_list %}
                                 <tr>
+                                    <td>{{ forloop.counter }}</td>
                                     <td>{{ c.position }}</td>
                                     <td>{{ c.company }}</td>
                                     <td>{{ c.rating }}/5</td>
-                                    <td><a href="{{c.link}}">Click to view more</a></td>
+                                    <td><a href="{{c.link}}">View Details</a></td>
                                 </tr>
                             {% endfor %}
                             </tbody>

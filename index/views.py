@@ -96,7 +96,7 @@ class SearchView(ListView):
                 'link': 'soft-eng-ASICS/'
             },
         ]
-        qs = []
+        qs = positions
         if self.industryID != '0':
             filtered_positions = []
             for p in positions:
