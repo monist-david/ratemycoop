@@ -25,116 +25,179 @@
     <div class="d-flex" id="wrapper">
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            <section class="container-fluid border mt-3 col-12 col-md-10">
-                <header>
-                    <div class="row">
-                        <div class="w-100">
-                            <h1 class="bg-dark text-white text-center">Co-op Rating Form</h1>
+            <div id="form-div">
+                <section class="container-fluid border mt-3 col-12 col-md-10">
+                    <header>
+                        <div class="row">
+                            <div class="w-100">
+                                <h1 class="bg-dark text-white text-center">Co-op Rating Form</h1>
+                            </div>
+                        </div>
+                    </header>
+
+                    <article id="ratingform">
+                        <form class="createratingform" role="form" id="form_ratingform">
+                            <div class="row">
+                                <div class="col">
+                                    <h4><strong>Software Engineering Co-op, Company X</strong> - Fall 2019</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <p><i>Please rate the following aspects of your co-op.</i></p>
+                                </div>
+                            </div>
+
+                            {% for c in form_categories %}
+                            <div class="form-group row">
+                                <div class="form-group col">
+                                    <p class="col-form-label col-xs-12" style="padding: 0">
+                                        <strong>{{c.name}}</strong>
+                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="popover" data-html="true"
+                                                data-content=
+                                                        "<div>
+                                                        {% for p in c.popover %}
+                                                        <div><b>{{p.value}}</b>: {{p.description}}</div>
+                                                        {% endfor %}
+                                                        </div>">?</button>
+                                    </p>
+                                    <p class="col-form-label col-xs-12" style="padding: 0"><i>{{c.description}}</i></p>
+                                    <div class="input-group" style="display: inline-block">
+                                        {% for r in radio_buttons %}
+                                        <label class="radio-inline" for="{{c.keyword}}_{{r.keyword}}" style="margin-right: 2em">
+                                            <input type="radio" id="{{c.keyword}}_{{r.keyword}}" required name="{{c.keyword}}" value="{{r.value}}">
+                                            <i></i> {{r.name}}
+                                        </label>
+                                        {% endfor %}
+                                    </div>
+                                    <input class="form-control" type="text" id="{{c.keyword}}_comments" name="comments" placeholder="Additional Comments (optional)">
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                            <div class="form-group row">
+                                <div class="form-group col">
+                                    <p class="col-form-label col-xs-12" style="padding: 0"><strong>{{culture.name}}</strong></p>
+                                    <p class="col-form-label col-xs-12" style="padding: 0"><i>{{culture.description}}</i></p>
+                                    <div class="input-group" style="display: inline-block">
+                                        {% for ch in checkboxes %}
+                                        <label for="{{culture.keyword}}_{{ch.keyword}}" style="margin-right: 2em">
+                                            <input type="checkbox" id="{{culture.keyword}}_{{ch.keyword}}" name="{{culture.keyword}}" value="{{ch.value}}">
+                                            <i></i> {{ch.name}}
+                                        </label>
+                                        {% endfor %}
+                                    </div>
+                                    <input class="form-control" type="text" id="{{culture.keyword}}_comments" name="comments" placeholder="Additional Comments (optional)">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="form-group col">
+                                    <p class="col-form-label col-xs-12" style="padding: 0"><strong>{{overall_rating.name}}</strong></p>
+                                    <p class="col-form-label col-xs-12" style="padding: 0"><i>{{overall_rating.description}}</i></p>
+                                    <div class="input-group" style="display: inline-block">
+                                        {% for ov in overall_rating_values %}
+                                        <label class="radio-inline" for="{{overall_rating.keyword}}_{{ov.keyword}}" style="margin-right: 2em" aria-label="required">
+                                            <input type="radio" id="{{overall_rating.keyword}}_{{ov.keyword}}" name="{{overall_rating.keyword}}" value="{{ov.value}}" required>
+                                            <i></i> {{ov.name}}
+                                        </label>
+                                        {% endfor %}
+                                    </div>
+                                    <input class="form-control" type="text" id="{{overall_rating.keyword}}_comments" name="comments" placeholder="Additional Comments">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="form-group col">
+                                    <p class="col-form-label col-xs-12" style="padding: 0"><i>{{contact_opt_in.description}}</i></p>
+                                    <div class="input-group" style="display: inline-block">
+                                        {% for co in contact_opt_in_values %}
+                                        <label class="radio-inline" for="{{contact_opt_in.keyword}}_{{co.keyword}}" style="margin-right: 2em">
+                                            <input type="radio" id="{{contact_opt_in.keyword}}_{{co.keyword}}" name="{{contact_opt_in.keyword}}" value="{{co.value}}" required="true">
+                                            <i></i> {{co.name}}
+                                        </label>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="form-group col">
+                                    <button style="margin-right:15px;" type="button" class="btn btn-md btn-success" data-toggle="modal" data-target="#confirmSubmitModal">Submit</button>
+                                    <button type="button" class="btn btn-md btn-danger" data-toggle="modal" data-target="#confirmCancelModal">Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </article>
+
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div id="success-div" style="display: none">
+        <section class="container-fluid mt-3 col-12 col-md-10">
+            <header>
+                <div class="row">
+                    <div class="w-100">
+                        <h2 class="text-center">Success!</h2>
+                        <h4 class="text-center">Thank you for submitting your rating form.</h4>
+                    </div>
+                </div>
+            </header>
+        </section>
+    </div>
+
+    <!-- Submit Confirmation Modal -->
+    <div class="modal fade" id="confirmSubmitModal" tabindex="-1" role="dialog" aria-labelledby="confirmSubmitModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmSubmitModalLabel">Are you sure you want to submit?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- <a href="{% url 'index:search' %}" class="btn btn-success">Yes, Submit</a> -->
+                    <a href="#" data-dismiss="modal" onclick="toggler();"  class="btn btn-success">Yes, Submit</a>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Return to Form</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cancel Confirmation Modal -->
+    <div class="modal fade" id="confirmCancelModal" tabindex="-1" role="dialog" aria-labelledby="confirmCancelModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmCancelModalLabel">Are you sure you want to cancel?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row" style="margin-bottom: 10px;"> 
+                            <div class="col-xs-12">
+                                <span style="margin-bottom: 5px"><i>If you cancel, your responses will not be saved.</i></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <a href="{% url 'index:search' %}" class="btn btn-danger">Yes, Cancel Form</a>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">No, Return to Form</button>
+                            </div>
                         </div>
                     </div>
-                </header>
-
-                <article id="ratingform">
-                    <form class="createratingform" role="form">
-                        <div class="row">
-                            <div class="col">
-                                <h5><strong>Software Engineering Co-op, Company X</strong> - Fall 2019</h5>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <p><i>Please rate the following aspects of your co-op.</i></p>
-                            </div>
-                        </div>
-
-                        {% for c in form_categories %}
-                        <div class="form-group row">
-                            <div class="form-group col">
-                                <p class="col-form-label col-xs-12" style="padding: 0">
-                                    <strong>{{c.name}}</strong>
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="popover" data-html="true"
-                                            data-content=
-                                                    "<div>
-                                                    {% for p in c.popover %}
-                                                    <div><b>{{p.value}}</b>: {{p.description}}</div>
-                                                    {% endfor %}
-                                                    </div>">?</button>
-                                </p>
-                                <p class="col-form-label col-xs-12" style="padding: 0"><i>{{c.description}}</i><p/>
-                                <div class="input-group" style="display: inline-block">
-                                    {% for r in radio_buttons %}
-                                    <label class="radio-inline" for="{{c.keyword}}_{{r.keyword}}" style="margin-right: 2em">
-                                        <input type="radio" id="{{c.keyword}}_{{r.keyword}}" name="{{c.keyword}}" value="{{r.value}}" required="true">
-                                        <i></i> {{r.name}}
-                                    </label>
-                                    {% endfor %}
-                                </div>
-                                <input class="form-control" type="text" id="{{c.keyword}}_comments" name="comments" placeholder="Additional Comments (optional)">
-                            </div>
-                        </div>
-                        {% endfor %}
-
-                        <div class="form-group row">
-                            <div class="form-group col">
-                                <p class="col-form-label col-xs-12" style="padding: 0"><strong>{{culture.name}}</strong></p>
-                                <p class="col-form-label col-xs-12" style="padding: 0"><i>{{culture.description}}</i><p/>
-                                <div class="input-group" style="display: inline-block">
-                                    {% for ch in checkboxes %}
-                                    <label for="{{culture.keyword}}_{{ch.keyword}}" style="margin-right: 2em">
-                                        <input type="checkbox" id="{{culture.keyword}}_{{ch.keyword}}" name="{{culture.keyword}}" value="{{ch.value}}">
-                                        <i></i> {{ch.name}}
-                                    </label>
-                                    {% endfor %}
-                                </div>
-                                <input class="form-control" type="text" id="{{culture.keyword}}_comments" name="comments" placeholder="Additional Comments (optional)">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="form-group col">
-                                <p class="col-form-label col-xs-12" style="padding: 0"><strong>{{overall_rating.name}}</strong></p>
-                                <p class="col-form-label col-xs-12" style="padding: 0"><i>{{overall_rating.description}}</i><p/>
-                                <div class="input-group" style="display: inline-block">
-                                    {% for ov in overall_rating_values %}
-                                    <label class="radio-inline" for="{{overall_rating.keyword}}_{{ov.keyword}}" style="margin-right: 2em">
-                                        <input type="radio" id="{{overall_rating.keyword}}_{{ov.keyword}}" name="{{overall_rating.keyword}}" value="{{ov.value}}" required="true">
-                                        <i></i> {{ov.name}}
-                                    </label>
-                                    {% endfor %}
-                                </div>
-                                <input class="form-control" type="text" id="{{overall_rating.keyword}}_comments" name="comments" placeholder="Additional Comments">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="form-group col">
-                                <p class="col-form-label col-xs-12" style="padding: 0"><i>{{contact_opt_in.description}}</i><p/>
-                                <div class="input-group" style="display: inline-block">
-                                    {% for co in contact_opt_in_values %}
-                                    <label class="radio-inline" for="{{contact_opt_in.keyword}}_{{co.keyword}}" style="margin-right: 2em">
-                                        <input type="radio" id="{{contact_opt_in.keyword}}_{{co.keyword}}" name="{{contact_opt_in.keyword}}" value="{{co.value}}" required="true">
-                                        <i></i> {{co.name}}
-                                    </label>
-                                    {% endfor %}
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="form-group col">
-                                <a href="{% url 'index:search' %}" class="btn btn-sm btn-success">Submit</a>
-                                <a href="{% url 'index:search' %}" class="btn btn-sm btn-danger">Cancel</a>
-                            </div>
-                        </div>
-
-                    </form>
-                </article>
-
-            </section>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- /#page-content-wrapper -->
+
 {% endblock %}
 
 {% block js %}
@@ -143,7 +206,21 @@ $(document).ready(function(){
   $('[data-toggle="popover"]').popover();
 });
 
+function toggler(id) {
+    var e = document.getElementById("form-div");
+    if(e.style.display == "none") {
+        e.style.display = "block";
+    } else {
+        e.style.display = "none";
+    }
 
+    var e2 = document.getElementById("success-div");
+    if(e2.style.display == "none") {
+        e2.style.display = "block";
+    } else {
+        e2.style.display = "none";
+    }
+}
 
 </script>
 {% endblock %}
