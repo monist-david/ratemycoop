@@ -40,8 +40,8 @@
         <div class="list-group list-group-flush">
             <a href="{% url 'index:ratingform' %}" class="list-group-item list-group-item-action bg-light">Rate a Co-op</a>
             <a href="{% url 'index:search' %}" class="list-group-item list-group-item-action bg-light">Search</a>
-            <a href="{% url 'index:construction' %}" class="list-group-item list-group-item-action bg-light">My Ratings</a>
-            <a href="{% url 'index:construction' %}" class="list-group-item list-group-item-action bg-light">My Favorites</a>
+            <a href="{% url 'index:myratings' %}" class="list-group-item list-group-item-action bg-light">My Ratings</a>
+            <a href="{% url 'index:favorites' %}" class="list-group-item list-group-item-action bg-light">My Favorites</a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -50,7 +50,7 @@
     <div id="page-content-wrapper">
 
         <nav class="navbar navbar-light bg-light border-bottom">
-            <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+            <button class="btn btn-primary btn-sm" id="menu-toggle">Toggle Menu</button>
 
             <ul class="navbar-nav flex-row ml-md-auto d-md-flex">
                 <li class="nav-item">

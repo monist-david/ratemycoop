@@ -36,6 +36,16 @@ class SearchView(ListView):
                 'link': '../construction/'
             },
             {
+                'id': 5,
+                'position': 'Software Developer',
+                'company': 'Facebook',
+                'rating': '4.8',
+                'ratingID': '5',
+                'industry': '4',
+                'keyword': '4',
+                'link': 'soft-dev-facebook/'
+            },
+            {
                 'id': 2,
                 'position': 'PT Co-op',
                 'company': 'PT Arlington',
@@ -56,26 +66,6 @@ class SearchView(ListView):
                 'link': '../construction/'
             },
             {
-                'id': 4,
-                'position': 'Software Engineering Co-op',
-                'company': 'ASICS',
-                'rating': '3.9',
-                'ratingID': '4',
-                'industry': '4',
-                'keyword': '4',
-                'link': 'soft-eng-ASICS/'
-            },
-            {
-                'id': 5,
-                'position': 'Software Developer',
-                'company': 'Facebook',
-                'rating': '4.8',
-                'ratingID': '5',
-                'industry': '4',
-                'keyword': '4',
-                'link': 'soft-dev-facebook/'
-            },
-            {
                 'id': 6,
                 'position': 'Data Scientist',
                 'company': 'Facebook',
@@ -94,6 +84,16 @@ class SearchView(ListView):
                 'industry': '4',
                 'keyword': '4',
                 'link': 'front-end-facebook/'
+            },
+            {
+                'id': 4,
+                'position': 'Software Engineering Co-op',
+                'company': 'ASICS',
+                'rating': '3.9',
+                'ratingID': '4',
+                'industry': '4',
+                'keyword': '4',
+                'link': 'soft-eng-ASICS/'
             },
         ]
         qs = []
@@ -628,6 +628,25 @@ class RatingFormView(FormView):
 
 class ConstructionView(TemplateView):
     template_name = "index/construction.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
+
+
+class FavoritesView(TemplateView):
+    template_name = "index/favorites.html"
+
+    def get(self, request):
+        return render(request, self.template_name)
+
+    def post(self, request):
+        return render(request, self.template_name)
+
+class MyRatingsView(TemplateView):
+    template_name = "index/myratings.html"
 
     def get(self, request):
         return render(request, self.template_name)

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import SearchView,  IndexView, ManagerView, FrontEndFacebook, RatingFormView, ConstructionView, SoftDevFacebook, DataScienceFacebook, FrontEndFacebookStudent, DataScienceFacebookStudent, SoftDevFacebookStudent, SoftDevASICSStudent
+from .views import SearchView,  IndexView, ManagerView, FrontEndFacebook, RatingFormView, ConstructionView, SoftDevFacebook, DataScienceFacebook, FrontEndFacebookStudent, DataScienceFacebookStudent, SoftDevFacebookStudent, SoftDevASICSStudent, FavoritesView, MyRatingsView
 
 app_name = 'index'
 urlpatterns = [
@@ -15,4 +15,6 @@ urlpatterns = [
     path('search/soft-eng-ASICS/', SoftDevASICSStudent.as_view(), name='soft-eng-ASICS-s'),
     path('ratingform/', RatingFormView.as_view(), name='ratingform'),
     path('construction/', ConstructionView.as_view(), name='construction'),
+    path('favorites/', FavoritesView.as_view(), name='favorites'),
+    path('myratings/', MyRatingsView.as_view(), name='myratings'),
 ]

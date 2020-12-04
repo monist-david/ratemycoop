@@ -1,0 +1,46 @@
+{% extends 'student_base.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block css %}
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Rate My Co-op</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'index/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'index/css/simple-sidebar.css' %}" rel="stylesheet">
+
+{% endblock %}
+
+
+{% block bodypage %}
+    <div class="d-flex" id="wrapper">
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <section class="container-fluid mt-3 col-12 col-md-10">
+                <header>
+                    <div class="row">
+                        <div class="w-100">
+                            <h4>You have not favorited any co-op positions yet.</h4>
+                        </div>
+                    </div>
+                </header>
+            </section>
+        </div>
+    </div>
+
+    <!-- /#page-content-wrapper -->
+{% endblock %}
+
+{% block js %}
+<script>
+</script>
+{% endblock %}
